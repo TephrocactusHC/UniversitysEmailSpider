@@ -23,7 +23,7 @@ def find_teacher(url):
     response = requests.get(root_url + url, headers=headers)
     result = re.sub('\[at\]|\(at\)| at |\(~at~\)', '@', response.text, re.I)
     result = re.sub('\[dot\]|\(dot\)| dot |\(~dot~\)|．', '.', result, re.I)
-    result = re.findall('([a-zA-Z0-9_\-\.]+@[a-zA-Z0-9_\-\.]+\.[a-zA-Z0-9_\-\.]+)', result)
+    result = re.findall('([a-zA-Z0-9_\-\.]+@[a-zA-Z0-9_\-\.]+\.[a-zA-Z0-9_\-\.]+)', result,re.S)
     return result
 
 
