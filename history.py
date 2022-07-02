@@ -32,7 +32,7 @@ def find_teacher(url):
 
 def find_teacher_list(url):
     response = requests.get(url, headers=headers)
-    response.encoding='utf-8'
+    response.encoding = 'utf-8'
     page = bs(response.text, 'html.parser')
     teacher_list = page.select('.wp_subcolumn_list li ul li')
     print(teacher_list)

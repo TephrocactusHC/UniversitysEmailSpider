@@ -1,13 +1,12 @@
-#coding = utf-8
-#@Time : 2022/7/1 23:05
-#@Author : HC
-#@File : pharmacy.py
-#@Software : PyCharm
+# coding = utf-8
+# @Time : 2022/7/1 23:05
+# @Author : HC
+# @File : pharmacy.py
+# @Software : PyCharm
 
 from bs4 import BeautifulSoup as bs
 import requests
 import re
-
 
 root_url = 'https://pharmacy.nankai.edu.cn/szdw'
 urls = [
@@ -16,7 +15,6 @@ urls = [
     '/js1.htm',
 ]
 
-
 headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) '
                   'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'
@@ -24,7 +22,7 @@ headers = {
 
 
 def find_teacher(url):
-    response = requests.get('https://pharmacy.nankai.edu.cn/'+url, headers=headers)
+    response = requests.get('https://pharmacy.nankai.edu.cn/' + url, headers=headers)
     response.encoding = 'utf-8'
     page = bs(response.text, 'html.parser')
     teacher_list = page.select('body')
@@ -35,11 +33,11 @@ def find_teacher(url):
 
 
 def find_teacher_list(url):
-    response = requests.get(root_url+url, headers=headers)
+    response = requests.get(root_url + url, headers=headers)
     response.encoding = 'utf-8'
     page = bs(response.text, 'html.parser')
     teacher_list = page.select('.content_Ul li a')
-    with open(r'D:\NKUspider\pharmacy.txt', 'a', encoding = 'utf-8') as f:
+    with open(r'D:\NKUspider\pharmacy.txt', 'a', encoding='utf-8') as f:
         for teacher in teacher_list:
             name = teacher.text
             email_list = find_teacher(teacher['href'])[:-1]

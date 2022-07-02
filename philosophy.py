@@ -1,20 +1,18 @@
-#coding = utf-8
-#@Time : 2022/6/29 11:07
-#@Author : HC
-#@File : philosophy.py
-#@Software : PyCharm
+# coding = utf-8
+# @Time : 2022/6/29 11:07
+# @Author : HC
+# @File : philosophy.py
+# @Software : PyCharm
 
 from bs4 import BeautifulSoup as bs
 import requests
 import re
-
 
 urls = [
     'http://phil.nankai.edu.cn/2017/0630/c6722a70411/page.htm',
     'http://phil.nankai.edu.cn/2017/0630/c6722a70410/page.htm',
     'http://phil.nankai.edu.cn/2017/0630/c6722a70409/page.htm'
 ]
-
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) '
